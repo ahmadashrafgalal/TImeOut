@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html class="loading dark-layout" lang="en" data-layout="dark-layout" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+    <title>Time Out</title>
+    <link rel="apple-touch-icon" href="app-assets/images/ico/apple-icon-120.png">
+    <link rel="shortcut icon" type="image/x-icon" href="timeout.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/extensions/toastr.min.css">
+    <!-- END: Vendor CSS-->
+
+
+    <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" type="text/css" href="app-assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/bootstrap-extended.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/colors.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/components.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/themes/dark-layout.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/themes/bordered-layout.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/themes/semi-dark-layout.css">
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="app-assets/css/core/menu/menu-types/horizontal-menu.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/plugins/extensions/ext-component-toastr.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/pages/ui-feather.css">
+    <!-- END: Page CSS-->
+
+
+</head>
+<!-- END: Head-->
+
+<!-- BEGIN: Body-->
+
+<body class="horizontal-layout horizontal-menu  navbar-floating footer-static  " data-open="hover" data-menu="horizontal-menu" data-col="">
+    <script src="script.js"></script>
+    <!-- BEGIN: Header-->
+    <nav class="header-navbar navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow navbar-brand-center" data-nav="brand-center">
+        <div class="navbar-header d-xl-block d-none">
+            <ul class="nav navbar-nav">
+                <li class="nav-ite">    
+                    <div class="navbar-brand">
+                        <img src="timeout.png" style="width: 100px; height: auto;"> 
+                        <h2 class="brand-text mb-0">Time Out</h2>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="navbar-container d-flex content">
+            <div class="bookmark-wrapper d-flex align-items-center">
+                <ul class="nav navbar-nav d-xl-none">
+                    <li class="nav-item"><a class="nav-link menu-toggle" href="javascript:void(0);"><i class="ficon" data-feather="menu"></i></a></li>
+                </ul>
+ 
+            </div>
+            <ul class="nav navbar-nav align-items-center ml-auto">
+                
+                <li class="nav-item d-none d-lg-block"><a class="nav-link nav-link-style"><i class="ficon" data-feather="sun"></i></a></li>
+                
+                <li class="nav-item dropdown dropdown-language"><a class="nav-link dropdown-toggle" id="dropdown-flag" href="javascript:void(0);" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flag-icon flag-icon-eg"></i><span class="selected-language">Arabic</span></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-flag">
+                        <a class="dropdown-item" href="" data-language="en">
+                            <i class="flag-icon flag-icon-eg">
+                            </i> Arabic
+                        </a>
+                        <a class="dropdown-item" href="index.html" data-language="en">
+                            <i class="flag-icon flag-icon-us">
+                            </i> English
+                        </a>
+                    </div>
+                </li>
+                
+                <li class="nav-item dropdown dropdown-user user-left">
+                    <a class="nav-link dropdown-toggle dropdown-user-link " id="dropdown-user" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="player1.png" alt="avatar" height="40" width="40">
+                        <div class="user-nav d-sm-flex d-none">
+                            <span class="user-name font-weight-bolder">Player 2</span>
+                        </div>
+                    </a>
+                </li>
+                
+                <li class="nav-item dropdown dropdown-user user-right">
+                    <a  class="nav-link dropdown-toggle dropdown-user-link " id="dropdown-user " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div  class="user-nav d-sm-flex d-none">
+                            <span class="user-name font-weight-bolder">Player 1</span>
+                        </div>
+                        <img src="player2.png" alt="avatar" height="40" width="40">
+                    </a>
+                </li>
+                
+
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- END: Header-->
+
+    <!-- BEGIN: Content-->
+    <div class="app-content content ">
+
+        <div style="display: flex;justify-content: center;">
+            <button id="start_button" onclick="StartGame()" type="button" class="btn btn-flat-primary waves-effect">Start Game</button>
+        </div>
+
+        <div class="content-wrapper">
+            <div class="content-header row justify-content-center">
+                <div class="container" style="display: flex;justify-content: space-between;margin: 20px;">
+                    <h1>
+                        <div style="padding: 10px;" class="badge badge-glow badge-warning" id="player2_a">Player 2 Turn</div>
+                    </h1>
+
+                    <h1>
+                        <div style="padding: 10px;" class="badge badge-glow badge-info" id="player1_a">Player 1 Turn</div>
+                    </h1>
+                </div>
+
+                <div class="col-md-9 col-12 mb-2 " >
+                    <div class="demo-vertical-spacing">
+                        <div id="bar" class="progress progress-bar-primary">
+                            <div id="timer" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="50" aria-valuemin="50" aria-valuemax="100" style="width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-body">
+                <!-- Feather icons section start -->
+                <section id="feather-icons"  style="display: flex;flex-direction: row-reverse;flex-wrap: wrap;">
+                    <div class="d-flex flex-wrap justify-content-center" id="boxes" style="margin: 0px 50px 0px 50px;display: flex;flex-direction: row-reverse;flex-wrap: wrap;">
+                        <div id="1" onclick="handelFirstClick(this.id)" style="font-size:xx-large" class="text-center bg-primary bg-darken-2 colors-container rounded text-white width-100 height-100 d-flex align-items-center justify-content-center mr-1 ml-50 my-1 shadow">
+                            <span>أ</span>
+                        </div>
+                        <div id="2" onclick="handelFirstClick(this.id)" style="font-size:xx-large" class="text-center bg-primary bg-darken-2 colors-container rounded text-white width-100 height-100 d-flex align-items-center justify-content-center mr-1 ml-50 my-1 shadow">
+                            <span>ب</span>
+                        </div>
+                        <div id="3" onclick="handelFirstClick(this.id)" style="font-size:xx-large" class="text-center bg-primary bg-darken-2 colors-container rounded text-white width-100 height-100 d-flex align-items-center justify-content-center mr-1 ml-50 my-1 shadow">
+                            <span>ت</span>
+                        </div>
+                        <div id="4" onclick="handelFirstClick(this.id)" style="font-size:xx-large" class="text-center bg-primary bg-darken-2 colors-container rounded text-white width-100 height-100 d-flex align-items-center justify-content-center mr-1 ml-50 my-1 shadow">
+                            <span>ث</span>
+                        </div>
+                        <div id="5" onclick="handelFirstClick(this.id)" style="font-size:xx-large" class="text-center bg-primary bg-darken-2 colors-container rounded text-white width-100 height-100 d-flex align-items-center justify-content-center mr-1 ml-50 my-1 shadow">
+                            <span>ج</span>
+                        </div>
+                        
+                        <div id="6" onclick="handelFirstClick(this.id)" style="font-size:xx-large" class="text-center bg-primary bg-darken-2 colors-container rounded text-white width-100 height-100 d-flex align-items-center justify-content-center mr-1 ml-50 my-1 shadow">
+                            <span>ح</span>
+                        </div>
+
+                        <div id="7" onclick="handelFirstClick(this.id)" style="font-size:xx-large" class="text-center bg-primary bg-darken-2 colors-container rounded text-white width-100 height-100 d-flex align-items-center justify-content-center mr-1 ml-50 my-1 shadow">
+                            <span>خ</span>
+                        </div>
+                        <div id="8" onclick="handelFirstClick(this.id)" style="font-size:xx-large" class="text-center bg-primary bg-darken-2 colors-container rounded text-white width-100 height-100 d-flex align-items-center justify-content-center mr-1 ml-50 my-1 shadow">
+                            <span>د</span>
+                        </div>
+                        <div id="9" onclick="handelFirstClick(this.id)" style="font-size:xx-large" class="text-center bg-primary bg-darken-2 colors-container rounded text-white width-100 height-100 d-flex align-items-center justify-content-center mr-1 ml-50 my-1 shadow">
+                            <span>ذ</span>
+                        </div>
+                        <div id="10" onclick="handelFirstClick(this.id)" style="font-size:xx-large" class="text-center bg-primary bg-darken-2 colors-container rounded text-white width-100 height-100 d-flex align-items-center justify-content-center mr-1 ml-50 my-1 shadow">
+                            <span>ر</span>
+                        </div>
+                        <div id="12" onclick="handelFirstClick(this.id)" style="font-size:xx-large" class="text-center bg-primary bg-darken-2 colors-container rounded text-white width-100 height-100 d-flex align-items-center justify-content-center mr-1 ml-50 my-1 shadow">
+                            <span>ز</span>
+                        </div>
+                        <div id="13" onclick="handelFirstClick(this.id)" style="font-size:xx-large" class="text-center bg-primary bg-darken-2 colors-container rounded text-white width-100 height-100 d-flex align-items-center justify-content-center mr-1 ml-50 my-1 shadow">
+                            <span>س</span>
+                        </div>
+                        <div id="15" onclick="handelFirstClick(this.id)" style="font-size:xx-large" class="text-center bg-primary bg-darken-2 colors-container rounded text-white width-100 height-100 d-flex align-items-center justify-content-center mr-1 ml-50 my-1 shadow">
+                            <span>ش</span>
+                        </div>
+                        <div id="14" onclick="handelFirstClick(this.id)" style="font-size:xx-large" class="text-center bg-primary bg-darken-2 colors-container rounded text-white width-100 height-100 d-flex align-items-center justify-content-center mr-1 ml-50 my-1 shadow">
+                            <span>ص</span>
+                        </div>
+                        <div id="16" onclick="handelFirstClick(this.id)" style="font-size:xx-large" class="text-center bg-primary bg-darken-2 colors-container rounded text-white width-100 height-100 d-flex align-items-center justify-content-center mr-1 ml-50 my-1 shadow">
+                            <span>ض</span>
+                        </div>
+                        <div id="17" onclick="handelFirstClick(this.id)" style="font-size:xx-large" class="text-center bg-primary bg-darken-2 colors-container rounded text-white width-100 height-100 d-flex align-items-center justify-content-center mr-1 ml-50 my-1 shadow">
+                            <span>ط</span>
+                        </div>
+                        <div id="18" onclick="handelFirstClick(this.id)" style="font-size:xx-large" class="text-center bg-primary bg-darken-2 colors-container rounded text-white width-100 height-100 d-flex align-items-center justify-content-center mr-1 ml-50 my-1 shadow">
+                            <span>ظ</span>
+                        </div>
+                        <div id="19" onclick="handelFirstClick(this.id)" style="font-size:xx-large" class="text-center bg-primary bg-darken-2 colors-container rounded text-white width-100 height-100 d-flex align-items-center justify-content-center mr-1 ml-50 my-1 shadow">
+                            <span>ع</span>
+                        </div>
+                        <div id="20" onclick="handelFirstClick(this.id)" style="font-size:xx-large" class="text-center bg-primary bg-darken-2 colors-container rounded text-white width-100 height-100 d-flex align-items-center justify-content-center mr-1 ml-50 my-1 shadow">
+                            <span>غ</span>
+                        </div>
+                        <div id="21" onclick="handelFirstClick(this.id)" style="font-size:xx-large" class="text-center bg-primary bg-darken-2 colors-container rounded text-white width-100 height-100 d-flex align-items-center justify-content-center mr-1 ml-50 my-1 shadow">
+                            <span>ف</span>
+                        </div>
+                        <div id="22" onclick="handelFirstClick(this.id)" style="font-size:xx-large" class="text-center bg-primary bg-darken-2 colors-container rounded text-white width-100 height-100 d-flex align-items-center justify-content-center mr-1 ml-50 my-1 shadow">
+                            <span>ق</span>
+                        </div>
+                        <div id="23" onclick="handelFirstClick(this.id)" style="font-size:xx-large" class="text-center bg-primary bg-darken-2 colors-container rounded text-white width-100 height-100 d-flex align-items-center justify-content-center mr-1 ml-50 my-1 shadow">
+                            <span>ك</span>
+                        </div>
+                        <div id="24" onclick="handelFirstClick(this.id)" style="font-size:xx-large" class="text-center bg-primary bg-darken-2 colors-container rounded text-white width-100 height-100 d-flex align-items-center justify-content-center mr-1 ml-50 my-1 shadow">
+                            <span>ل</span>
+                        </div>
+                        <div id="25" onclick="handelFirstClick(this.id)" style="font-size:xx-large" class="text-center bg-primary bg-darken-2 colors-container rounded text-white width-100 height-100 d-flex align-items-center justify-content-center mr-1 ml-50 my-1 shadow">
+                            <span>م</span>
+                        </div>
+                        <div id="26" onclick="handelFirstClick(this.id)" style="font-size:xx-large" class="text-center bg-primary bg-darken-2 colors-container rounded text-white width-100 height-100 d-flex align-items-center justify-content-center mr-1 ml-50 my-1 shadow">
+                            <span>ن</span>
+                        </div>
+                        <div id="27" onclick="handelFirstClick(this.id)" style="font-size:xx-large" class="text-center bg-primary bg-darken-2 colors-container rounded text-white width-100 height-100 d-flex align-items-center justify-content-center mr-1 ml-50 my-1 shadow">
+                            <span>هـ</span>
+                        </div>
+                        <div id="28" onclick="handelFirstClick(this.id)" style="font-size:xx-large" class="text-center bg-primary bg-darken-2 colors-container rounded text-white width-100 height-100 d-flex align-items-center justify-content-center mr-1 ml-50 my-1 shadow">
+                            <span>و</span>
+                        </div>
+                        <div id="29" onclick="handelFirstClick(this.id)" style="font-size:xx-large" class="text-center bg-primary bg-darken-2 colors-container rounded text-white width-100 height-100 d-flex align-items-center justify-content-center mr-1 ml-50 my-1 shadow">
+                            <span>ي</span>
+                        </div>
+                        
+                    </div>
+                </section>
+                <!-- Feather icon-s section end -->
+
+            </div>
+        </div>
+    </div>
+    <!-- END: Content-->
+
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
+
+
+
+    <!-- BEGIN: Vendor JS-->
+    <script src="app-assets/vendors/js/vendors.min.js"></script>
+    <!-- BEGIN Vendor JS-->
+
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="app-assets/vendors/js/ui/jquery.sticky.js"></script>
+    <script src="app-assets/vendors/js/extensions/toastr.min.js"></script>
+    <!-- END: Page Vendor JS-->
+
+    <!-- BEGIN: Theme JS-->
+    <script src="app-assets/js/core/app-menu.js"></script>
+    <script src="app-assets/js/core/app.js"></script>
+    <!-- END: Theme JS-->
+
+    <!-- BEGIN: Page JS-->
+    <script src="app-assets/js/scripts/ui/ui-feather.js"></script>
+    <!-- END: Page JS-->
+
+
+    <script>
+        $(window).on('load', function() {
+            if (feather) {
+                feather.replace({
+                    width: 14,
+                    height: 14
+                });
+            }
+        })
+    </script>
+</body>
+<!-- END: Body-->
+<style>
+    .user-left {
+        float: left;
+        margin-right: auto; /* يدفع العنصر إلى اليسار */
+    }
+
+    .user-right {
+        float: right;
+        margin-left: auto; /* يدفع العنصر إلى اليمين */
+    }
+    .navbar-nav {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+</style>
+</html>
